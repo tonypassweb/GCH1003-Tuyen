@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <title>Home Page</title>`
+</head>
+<body>
+    <h1 class="title">Toy store</h1>
+    <ul>
+        <li><a href="/new">New Product</a></li>
+    </ul>
+    <form action="/search" method="post">
+        <input type="text" placeholder="Name to search" name="txtName">
+        <input type="submit" value="Search">
+    </form>
+    <div class="product">
+        <ul>
+        {{#each results}}
+            <li>
+                <br />
+                <div class = "box">
+                    <img src="{{picture}}" alt="" width="150" height="100" />
+                    <div class="productContent">
+                        <br />
+                        <span> {{name}} </span>
+                        <br />
+                        <span> {{price}} </span>
+                    </div>
+                        <div class="buttons">
+                        <a href="/delete?id={{_id}}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
+                        <a href="/edit?id={{_id}}" class="btn btn-warning">Edit</a>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+      </ul>
+    </div>
+</body>
+</html>

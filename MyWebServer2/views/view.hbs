@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>View all</title>
+</head>
+<body>
+    <h1>All employee</h1>
+    <form action="/search" method="post">
+        <input type="text" name="txtName"  placeholder="Enter name to search" size="30" 
+            style="margin: 10px;">
+        <input type="submit" value="search">
+    </form>
+    <div class="container">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each ds}}
+            <tr>
+                {{#if name}}
+                <td>
+                    <a style="color: rgb(203, 90, 188);" href="/delete?name={{name}}" onclick="return confirm('Are you sure?')">{{name}}</a>
+                </td>
+                {{else}}
+                <td style="color: red;"> <a href="/delete?name={{name}}"> Not availible </a> </td>
+                {{/if}}
+                {{#if country}}
+                <td>
+                    <a style="color: rgb(9, 80, 9);" href="/delete?country={{country}}">{{country}}</a>
+                </td>
+                {{else}}
+                <td style="color: red;">Not availible</td>
+                {{/if}}
+                <td><a href="/edit?id={{id}}">Edit</a></td>
+        </tr>
+        {{/each}}
+        </tbody>
+        </table>
+    </div>
+</body>
+</html>
